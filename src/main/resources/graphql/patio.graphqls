@@ -1,0 +1,26 @@
+type Patio {
+    id: ID
+    nome: String
+    sigla: String
+    descricao: String
+    uf: String
+    cidade: String
+}
+
+extend type Query {
+    ByID(id: ID!): Patio
+    patios: [Patio]
+}
+
+input PatioInput{
+    nome: String!,
+    descricao: String!,
+    sigla: String!,
+    uf: String!,
+    cidade: String!
+}
+
+extend type Mutation {
+    savePatio(patio: PatioInput!): Patio
+    updatePatio(id: ID!, patio: PatioInput!): Patio
+}
