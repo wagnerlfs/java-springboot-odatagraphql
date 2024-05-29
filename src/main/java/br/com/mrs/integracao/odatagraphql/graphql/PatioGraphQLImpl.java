@@ -14,6 +14,10 @@ public class PatioGraphQLImpl implements IPatioGraphQL {
     @Autowired
     private PatioService patioService;
 
+    public PatioGraphQLImpl(PatioService patioService){
+        this.patioService = patioService;
+    }
+
     @Override
     public Patio ByID(int id) {
         return patioService.findById(id);
