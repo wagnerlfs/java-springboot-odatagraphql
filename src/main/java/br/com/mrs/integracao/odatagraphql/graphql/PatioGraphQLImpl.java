@@ -1,7 +1,9 @@
 package br.com.mrs.integracao.odatagraphql.graphql;
 
 import br.com.mrs.integracao.odatagraphql.entity.Patio;
+import br.com.mrs.integracao.odatagraphql.entity.Previsibilidade;
 import br.com.mrs.integracao.odatagraphql.service.PatioService;
+import br.com.mrs.integracao.odatagraphql.service.PrevisibilidadeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +15,9 @@ public class PatioGraphQLImpl implements IPatioGraphQL {
 
     @Autowired
     private PatioService patioService;
+
+    @Autowired
+    private PrevisibilidadeService previsibilidadeService;
 
     public PatioGraphQLImpl(PatioService patioService){
         this.patioService = patioService;
