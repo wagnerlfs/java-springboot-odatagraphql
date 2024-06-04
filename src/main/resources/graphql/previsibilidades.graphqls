@@ -1,0 +1,28 @@
+type Previsibilidade {
+    id: ID
+    PID_DOCM_TRPT: String
+    ID_VEIC: String
+    SG_PATIO_ATUAL: String
+    CD_PRFX_INTN_TREM: String
+    SG_PATIO_DEST: String
+    DT_PREV_CHEG_DEST: String
+    DT_PREV_CHEG_DEST_GRADE: String
+}
+
+extend type Query {
+    FindById(id: ID!): Previsibilidade
+    FindByIdVeiculo(idveiculo: String!): Previsibilidade
+    Previsibilidades: [Previsibilidade]
+}
+
+input PrevisibilidadeInput{
+    PID_DOCM_TRPT: String!,
+    ID_VEIC: String!,
+    SG_PATIO_ATUAL: String!,
+    CD_PRFX_INTN_TREM: String!
+}
+
+extend type Mutation {
+    savePrevisibilidade(previsibilidadeInput: PrevisibilidadeInput!): Previsibilidade
+    updatePrevisibilidade(id: ID!, previsibilidade: PrevisibilidadeInput!): Previsibilidade
+}
