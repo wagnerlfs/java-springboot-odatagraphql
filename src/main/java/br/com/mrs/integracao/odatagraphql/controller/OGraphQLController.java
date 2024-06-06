@@ -10,6 +10,7 @@ import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 import java.util.Objects;
@@ -34,13 +35,16 @@ public class OGraphQLController {
     }
 
     @QueryMapping("Previsibilidades")
-    public ResponseEntity<List<Previsibilidade>> Previsibilidades() {
+    @ResponseBody
+    public List<Previsibilidade> Previsibilidades() {
         List<Previsibilidade> listaPrevisibilidades = previsibilidadeService.findAll();
 
         if(Objects.nonNull(listaPrevisibilidades)){
-            return ResponseEntity.ok(listaPrevisibilidades);
+            ResponseEntity.ok();
+            return listaPrevisibilidades;
         }else{
-            return ResponseEntity.noContent().build();
+            ResponseEntity.noContent().build();
+            return null;
         }
     }
 }
